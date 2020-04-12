@@ -1,0 +1,22 @@
+#配置端口号
+server.port: 8888
+
+#配置数据库数据源
+spring:
+    datasource:
+        type: com.mchange.v2.c3p0.ComboPooledDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/dbtest2
+        username: root
+        password: root
+        
+#mybatis全局配置
+mybatis:
+  typeAliasesPackage: cn.sb.entity #配置实体类 别名
+  mapperLocations: classpath:mappers/*.xml #配置mapper.xml映射文件
+
+#配置文件上传的地址
+file:
+  path: "f://springmvc实现上传的文件/"
+
+  

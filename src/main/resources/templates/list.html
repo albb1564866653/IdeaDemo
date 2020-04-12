@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>list</title>
+    <script type="text/javascript" th:src="@{/js/jquery-1.12.4.js}"></script>
+    <!-- Bootstrap -->
+    <link th:href="@{/bootstrap-3.3.7-dist/css/bootstrap.min.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<br/><br/><br/>
+
+<h1 align="center">信息列表</h1><br/>
+
+    <div class="container-fluid col-md-offset-4">
+        <div class="col-md-6">
+
+            <table class="table table-hover">
+                <tr class="danger">
+                    <td>#</td>
+                    <td>stuName</td>
+                    <td>stuAge</td>
+                    <td>graName</td>
+                </tr>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.stuNo}">xx</td>
+                    <td th:text="${student.stuName}">xx</td>
+                    <td th:text="${student.stuAge}">xx</td>
+                    <td th:text="${student.graName}">xx</td>
+                </tr>
+
+            </table>
+
+            <!-- 分页信息-->
+            <p th:text="'共'+${page.getPages()}+'页,当前第'+${page.getPageNum()}+'页,有'+${page.getTotal()}+'条记录'">总共xx页</p>
+
+        </div>
+    </div>
+
+    <div class="container-fluid col-md-offset-3">
+        <div class="col-xs-10 col-xs-offset-2">
+
+            <!-- 分页条-->
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li><a href="/list?pageNum=1" th:if="${page.isHasPreviousPage()}">首页</a></li>
+
+                    <!--                    <li class="active">-->
+                    <!--                    <span>1 <span class="sr-only">(current)</span></span>-->
+                    <!--                    </li>-->
+
+                    <li th:if="${page.isHasPreviousPage()}"><a href="#" th:attr="href='/list?pageNum='+${page.getPageNum()-1}">上一页</a></li>
+
+
+                    <li th:if="${page.isHasNextPage()}"><a href="#" th:attr="href='/list?pageNum='+${page.getPageNum()+1}">下一页</a></li>
+                    <!--                    th:attr="class='active'"-->
+
+                    <li><a href="#" th:if="${page.isHasNextPage()}" th:attr="href='/list?pageNum='+${page.getPages()}">尾页</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</body>
+</html>
