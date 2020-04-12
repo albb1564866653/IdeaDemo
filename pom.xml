@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
-            <version>0.9.5.2</version>
+            <version>0.9.5.4</version>
         </dependency>
 
         <!-- 开发工具，包含热部署等功能，热部署，修改代码的时候不需要重启项目，会自动更新项目 -->
